@@ -1,14 +1,13 @@
 [package]
-name = "proc-mozjs"
+name = "proc_mozjs"
 version = "0.1.0"
 authors = ["sagudev <samo.golez@outlook.com>"]
 edition = "2018"
 
-[lib]
-proc-macro = true
-
-[features]
-debugmozjs = ['mozjs/debugmozjs']
-
 [dependencies]
+concat-idents = "1"
+proc = { path = "proc" }
+
+[dev-dependencies]
 mozjs = { git = "https://github.com/servo/rust-mozjs", rev="ef63e568c6aaa1c0f0d1c11f49a99acff1306709"}
+libc = "0.2.92"

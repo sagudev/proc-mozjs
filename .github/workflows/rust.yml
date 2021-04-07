@@ -14,7 +14,6 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         rust: [stable]
-        features: ["--features debugmozjs", ""]
     steps:
     - uses: actions/checkout@v2
     - name: Install deps on osx
@@ -49,8 +48,8 @@ jobs:
       if: startsWith(matrix.os, 'windows') != true
       run: |
         ccache -z
-        ccache cargo build --verbose ${{ matrix.features }}
-        ccache cargo test --verbose ${{ matrix.features }}
+        ccache cargo build --verbose
+        ccache cargo test --verbose
         ccache -s
     - name: Build Windows
       if: startsWith(matrix.os, 'windows')
@@ -66,4 +65,4 @@ jobs:
         LIBCLANG_PATH: "C:\\ProgramData\\scoop\\apps\\llvm\\current\\lib"
         CARGO_HOME: ${{ github.workspace }}\..\.cargo
       run: |
-        cargo test --verbose --verbose ${{ matrix.features }}
+        cargo test --verbose --verbose
