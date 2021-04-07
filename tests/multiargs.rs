@@ -15,7 +15,7 @@ use mozjs::rust::{JSEngine, RealmOptions, Runtime, SIMPLE_GLOBAL_CLASS};
 use std::ptr;
 
 #[test]
-fn callback() {
+fn multiarg() {
     let engine = JSEngine::init().unwrap();
     let runtime = Runtime::new(engine.handle());
     let context = runtime.cx();
@@ -43,14 +43,18 @@ fn callback() {
             0,
         );
         assert!(!function.is_null());
-        let javascript = "puts('Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ');";
+        let javascript = "puts('Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ', false);";
         rooted!(in(context) let mut rval = UndefinedValue());
         let _ = runtime.evaluate_script(global, javascript, "test.js", 0, rval.handle_mut());
     }
 }
 
 #[jsfn]
-fn puts(s: &String) {
+fn puts(s: &String, new_line: bool) {
     assert_eq!(s, "Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ");
-    println!("{}", s);
+    if new_line {
+        println!("{}", s);
+    } else {
+        print!("{}", s);
+    }
 }
