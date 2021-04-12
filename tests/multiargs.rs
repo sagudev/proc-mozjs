@@ -50,7 +50,7 @@ fn multiarg() {
 }
 
 #[jsfn]
-fn puts(s: &String, new_line: bool) {
+fn puts(s: String, new_line: bool, _o: Option<bool>) {
     assert_eq!(s, "Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ");
     if new_line {
         println!("{}", s);

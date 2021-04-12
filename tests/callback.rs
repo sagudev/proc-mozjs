@@ -50,7 +50,7 @@ fn callback() {
 }
 
 #[jsfn]
-fn puts(s: &String) {
+fn puts(s: String) {
     assert_eq!(s, "Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ");
     println!("{}", s);
 }
