@@ -37,6 +37,8 @@ pub fn jsfn(attr: TokenStream, item: TokenStream) -> TokenStream {
     }
     // name of function
     let f_name = function.sig.ident;
+    // name of function in string
+    let f_name_str = f_name.to_string();
     // name of internal function which will be binded to mozjs
     let f_mozjs_name = format_ident!("____to_be_mozjs_{}", f_name);
     // generate internal wrapper function
@@ -53,7 +55,7 @@ pub fn jsfn(attr: TokenStream, item: TokenStream) -> TokenStream {
             } else {
                 ::mozjs::jsapi::JS_ReportErrorASCII(
                     context,
-                    b"#f_name() requires exactly #f_nargs argument\0".as_ptr() as *const libc::c_char,
+                    format!("{} requires exactly {} argument", #f_name_str, #f_nargs).as_ptr() as *const libc::c_char,
                 );
                 false
             }
