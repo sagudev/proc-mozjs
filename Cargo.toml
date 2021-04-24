@@ -9,5 +9,5 @@ concat-idents = "1"
 proc = { path = "proc" }
 
 [dev-dependencies]
-mozjs = { git = "https://github.com/servo/rust-mozjs", rev="ef63e568c6aaa1c0f0d1c11f49a99acff1306709"}
+mozjs = { git = "https://github.com/servo/rust-mozjs", rev="fe738cca3320ffcbc4c520ced79c2141ceabf42d"}
 libc = "0.2.92"
