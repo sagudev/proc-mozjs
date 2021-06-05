@@ -6,7 +6,7 @@ edition = "2018"
 
 [dependencies]
 concat-idents = "1"
-proc = { path = "proc" }
+macro = { path = "./components/macro" }
 
 [dev-dependencies]
 mozjs = { git = "https://github.com/servo/rust-mozjs", rev="fe738cca3320ffcbc4c520ced79c2141ceabf42d"}

@@ -1,4 +1,4 @@
-#[macro_use]
+/* #[macro_use]
 extern crate mozjs;
 extern crate libc;
 
@@ -58,3 +58,4 @@ fn puts(s: String, new_line: bool, _o: Option<bool>) {
         print!("{}", s);
     }
 }
+ */

@@ -2,10 +2,10 @@
 extern crate mozjs;
 extern crate libc;
 
-use proc_mozjs::{bindfn, jsfn};
+use proc_mozjs::{bindfn, mozjs};
 
 // here we import only engine parts
-use mozjs::jsapi::JSAutoRealm;
+use mozjs::{conversions::ToJSValConvertible, jsapi::{JSAutoRealm, JSContext, MutableHandleValue}};
 use mozjs::jsapi::JS_DefineFunction;
 use mozjs::jsapi::JS_NewGlobalObject;
 use mozjs::jsapi::OnNewGlobalHookOption;
@@ -49,8 +49,9 @@ fn callback() {
     }
 }
 
-#[jsfn]
-fn puts(s: String) {
+
+#[mozjs]
+pub fn puts(s: String) {
     assert_eq!(s, "Test Iñtërnâtiônàlizætiøn ┬─┬ノ( º _ ºノ) ");
     println!("{}", s);
 }

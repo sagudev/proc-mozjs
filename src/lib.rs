@@ -1,6 +1,6 @@
 //#[macro_use] extern crate proc;
 // https://github.com/rust-lang/rust/issues/40090
-pub use proc::*;
+pub use r#macro::*;
 
 /// Provide name of internal function to be binded with mozjs
 #[macro_export]

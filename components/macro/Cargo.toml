@@ -1,5 +1,5 @@
 [package]
-name = "proc"
+name = "macro"
 version = "0.1.0"
 authors = ["sagudev <samo.golez@outlook.com>"]
 edition = "2018"
@@ -7,7 +7,10 @@ edition = "2018"
 [lib]
 proc-macro = true
 
+[features]
+__dbg = []
+default = ["__dbg"]
+
 [dependencies]
-proc-macro2 = "1.0"
 quote = "1.0"
-syn = { version = "1.0", features = ["full", "extra-traits"] }
+macro-support = { path = "../macro-support" }

@@ -1,0 +1,12 @@
+[package]
+name = "macro-support"
+version = "0.1.0"
+authors = ["sagudev <samo.golez@outlook.com>"]
+edition = "2018"
+
+[dependencies]
+wasm-bindgen-backend = { path = "../backend" }
+wasm-bindgen-shared = { path = "../shared" }
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "1.0", features = ["full", "visit", "extra-traits"] }
